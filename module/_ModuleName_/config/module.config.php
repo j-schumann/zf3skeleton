@@ -28,6 +28,11 @@ return [
                     'roles'      => ['guest', 'user'],
                 ],
                 [
+                    'controller' => 'Inso\Controller\Account',
+                    'action'     => ['settings'],
+                    'roles'      => ['user'],
+                ],
+                [
                     'controller' => '_ModuleName_\Controller\Index',
                     'roles'      => ['guest', 'user'],
                 ],

@@ -27,4 +27,45 @@ class AccountController extends AbstractActionController
             return $this->redirect()->toRoute('account/login');
         }
     }
+
+    /**
+     * Allows the user to make some general settings.
+     *
+     * @return ViewModel
+     */
+    public function settingsAction()
+    {
+        $meta = $this->getServiceLocator()->get(Meta::class);
+        /* @var $meta Meta */
+
+        /*$cc = $meta->getObjectValue($this->identity(), 'user.exampleSetting');
+
+        $form = $this->getServiceLocator()->get('FormElementManager')
+                ->get('Sambeso\Form\User\Settings');
+        $form->setData(['exampleSetting' => $cc]);
+
+        $viewModel = $this->createViewModel([
+            'form' => $form,
+        ]);
+
+        if (!$this->request->isPost()) {
+            return $viewModel;
+        }
+
+        $isValid = $form->setData($this->request->getPost())->isValid();
+        if (!$isValid) {
+            return $viewModel;
+        }
+
+        $data = $form->getData();
+        $meta->setObjectValue($this->identity(), 'user.exampleSetting',
+                $data['costCenter']);
+        $meta->getEntityManager()->flush();
+
+        $this->flashMessenger()
+                ->addSuccessMessage('message.account.settings.edited');
+         */
+
+        return $this->redirect()->toRoute('account');
+    }
 }

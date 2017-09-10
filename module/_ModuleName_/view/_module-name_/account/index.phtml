@@ -1,0 +1,35 @@
+    <h3><?php echo $this->translate(array('view.account.index.heading', $this->identity()->getDisplayName())); ?></h3>
+<p>
+    <?php echo $this->translate('view.account.index.intro'); ?>
+</p>
+<div class="flash-messenger">
+    <?php $this->flashMessenger()->renderAll(); ?>
+</div>
+
+<p>
+    <ul>
+        <li>
+            <?php echo $this->translate('view.user.displayName').': '.$this->identity()->getDisplayName(); ?>
+            <a href="<?php echo $this->url('account/change-displayname'); ?>" title="<?php echo $this->translate('view.user.gotoDisplayNameChange'); ?>">
+                <small><span class="glyphicon glyphicon-pencil"></span></small>
+            </a>
+        </li>
+        <li>
+            <?php echo $this->translate('view.user.email').': '.$this->identity()->getEmail(); ?>
+        </li>
+    </ul>
+</p>
+
+<p>
+    <a href="<?php echo $this->url('account/logout'); ?>" title="<?php echo $this->translate('view.user.gotoLogout'); ?>">
+        <?php echo $this->translate('view.user.gotoLogout'); ?>
+    </a>
+    <br />
+    <a href="<?php echo $this->url('account/change-password'); ?>" title="<?php echo $this->translate('view.user.gotoPasswordChange'); ?>">
+        <?php echo $this->translate('view.user.gotoPasswordChange'); ?>
+    </a>
+    <br />
+    <a href="<?php echo $this->url('account/delete'); ?>" title="<?php echo $this->translate('view.user.gotoAccountDelete'); ?>">
+        <?php echo $this->translate('view.user.gotoAccountDelete'); ?>
+    </a>
+</p>
