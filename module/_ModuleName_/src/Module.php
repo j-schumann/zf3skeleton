@@ -46,9 +46,12 @@ class Module implements
     {
         return [
             'factories' => [
-                /*'_ModuleName_\Controller\Api' => function ($sm) {
-                    return new Controller\ApiController($sm);
-                },*/
+                '_ModuleName_\Controller\Account' => function ($sm) {
+                    return new Controller\AccountController($sm);
+                },
+                '_ModuleName_\Controller\Index' => function ($sm) {
+                    return new Controller\IndexController($sm);
+                },
             ],
         ];
     }

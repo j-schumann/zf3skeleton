@@ -22,10 +22,15 @@ return [
         'guards' => [
             // all controllers need a guard or access is denied by default
             'BjyAuthorize\Guard\Controller' => [
-                /*[
-                    'controller' => '_ModuleName_\Controller\Api',
+                [
+                    'controller' => '_ModuleName_\Controller\Account',
+                    'action'     => ['index'],
                     'roles'      => ['guest', 'user'],
-                ],*/
+                ],
+                [
+                    'controller' => '_ModuleName_\Controller\Index',
+                    'roles'      => ['guest', 'user'],
+                ],
             ],
         ],
         'resource_providers' => [
