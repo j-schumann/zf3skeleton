@@ -1,0 +1,199 @@
+/* fix padding for the fixed menu */
+body.navbar-container {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body.navbar-container {
+    padding-top: 60px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+.navbar-logo {
+    padding: 0;
+}
+
+.navbar-logo img {
+    height: 46px;
+}
+
+.jumbotron .media-object {
+    margin-top: 20px;
+    height: 200px;
+}
+
+/* Offset jump-to anchors for the fixed header */
+a[name] {
+    display: block;
+    position: relative;
+    top: -50px;
+    visibility: hidden;
+}
+
+/* ==== STICKY FOOTER ==== */
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+
+  /* Negative indent footer by it's height */
+  margin: 0 auto -100px; /* = 70 footer height + 30 footer margin */
+  /* Pad bottom by footer height */
+  padding: 0 0 100px; /* = 70 footer height + 30 footer margin */
+}
+
+#footer {
+  background-color: #f5f5f5;
+  margin-top: 30px;
+}
+/* Set the fixed height of the footer here, also contains space for the
+cookiebar so footer is not hidden */
+#footer .container {
+  height: 70px;
+}
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/* ==== /STICKY FOOTER ==== */
+
+/* ==== COOKIE_BAR ==== */
+#cookie-bar {
+    background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
+    font-weight: bold;
+    min-height: 40px;
+    height: auto;
+    line-height: 35px;
+}
+/* colors from text-info/bg-info */
+#cookie-bar .cb-policy {
+    color: #3a87ad;
+    background-color: #d9edf7;
+}
+#cookie-bar .cb-policy:hover {
+    color: #2d6987;
+    background-color: #afd9ee;
+}
+/* colors from text-warning/bg-warning */
+#cookie-bar .cb-enable {
+    color: #c09853;
+    background-color: #fcf8e3;
+}
+#cookie-bar .cb-enable:hover {
+    color: #a47e3c;
+    background-color: #f7ecb5;
+}
+/* ==== /COOKIE_BAR ==== */
+
+section {
+    padding-top: 100px;
+}
+section h2.section-heading {
+    font-size: 40px;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+/* we want bold labels only for required elements */
+label {
+    font-weight: 400;
+}
+label.required {
+    font-weight: 800;
+}
+
+/* bootstrap does not know "error"... */
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+}
+.alert-error hr {
+    border-top-color: #e6c1c7;
+}
+.alert-error .alert-link {
+    color: #953b39;
+}
+
+/* we don't want the readonly design but show clickable */
+#container-deadline #deadline {
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+/* bootstrap normally requires a <div class=radio> around each label/input, we
+   only use the radio class on the container */
+.radio label {
+    display:block;
+}
+
+.jumbotron h1 {
+    font-size: 56px;
+}
+
+.jumbotron .btn {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+mark {
+    background-color: #ece8c3;
+    padding: 0px;
+}
+
+/* columns with same height */
+@media screen and (min-width: 768px) {
+  .equal, .equal > div[class*='col-'] {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex: 1 0 auto;
+  }
+}
+
+/* Für alle jQuery UI Elemente weil diese keinen Namen entsprechend dem
+   Elternelement erhalten: auf das background-image verzichten weil das bei
+   mehrzeiligen Einträgen bescheiden aussieht und die Schriftstärke nicht ändern
+   damit es nicht so flackert beim Hover */
+.ui-state-hover, .ui-state-focus {
+    background: #fdf5ce !important;
+    font-weight: normal !important;
+}
+.ui-state-default {
+    font-weight: normal !important;
+}
+
+.table-condensed > thead > tr > th,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > td,
+.table-condensed > tfoot > tr > td {
+    padding: 0px 6px 0px 0px;
+}
+.table > thead > tr > th.vcenter,
+.table > tbody > tr > th.vcenter,
+.table > tfoot > tr > th.vcenter,
+.table > thead > tr > td.vcenter,
+.table > tbody > tr > td.vcenter,
+.table > tfoot > tr > td.vcenter {
+    vertical-align: middle;
+}
+
+div.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+/* @todo dropdown einstreifen mit :even */

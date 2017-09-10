@@ -1,0 +1,163 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+
+        <?php
+        $serverUrl = $this->serverUrl(true);
+
+        echo $this->headTitle($this->translate('view.application.name'))
+                ->setSeparator(' - ')
+                ->setAutoEscape(false);
+                //->append('_ModuleName_');
+
+        echo $this->headMeta()
+            ->appendName('description', "_ModuleName_")
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+            ->appendProperty('og:title', $this->headTitle()->renderTitle())
+            ->appendProperty('og:url', $serverUrl)
+            ->appendProperty('og:type', 'website');
+            //->appendProperty('og:image', $serverUrl.'img/ogimage-20160906.png')
+            //->appendProperty('og:image:width', '1200')
+            //->appendProperty('og:image:height', '800')
+            //->appendProperty('og:description', "_ModuleName_");
+
+        $this->headLink()
+            // bootswatch theme "cerulean", v3.3.7
+            ->prependStylesheet('/css/bootstrap.min.css')
+
+            ->appendStylesheet(
+                '//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css',
+                'screen',
+                false,
+                ['integrity' => 'sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1', 'crossorigin' => 'anonymous']
+            )
+            ->appendStylesheet(
+                '//code.jquery.com/ui/1.11.2/themes/ui-lightness/jquery-ui.min.css',
+                'screen',
+                false,
+                ['integrity' => 'sha384-Vpp9zDAUaNFm75eS6FRYvs3zFFxyuXz1wCwxz/XE3CQ0zrNpRrEYY5bixilCHXVD', 'crossorigin' => 'anonymous']
+            )
+            ->appendStylesheet(
+                '//cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.1/jquery.datetimepicker.min.css',
+                'screen',
+                false,
+                ['integrity' => 'sha384-roeuPfSU+HxIc93v3lbzixYPIhcINmhbsi1l5OSkx/qBPt3D3L2XbT7jUZYUL63R', 'crossorigin' => 'anonymous']
+            );
+
+        // @todo PR für headScript() damit "integrity" als bekanntes Attrib aufgenommen wird
+        $this->headScript()->setAllowArbitraryAttributes(true)
+            ->prependFile(
+                '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
+                'text/javascript',
+                ['crossorigin' => 'anonymous', 'integrity' => 'sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa']
+            )
+            ->prependFile(
+                '//code.jquery.com/ui/1.11.2/jquery-ui.min.js',
+                'text/javascript',
+                ['crossorigin' => 'anonymous', 'integrity' => 'sha384-IvbGQHn8kzhI5WJ08ahOTFvlAv0Tm7ELkg+2XkIaylUDhvHKQ7y55N7B0ruleN86']
+            )
+            ->prependFile(
+                '//code.jquery.com/jquery-2.1.3.min.js',
+                'text/javascript',
+                ['crossorigin' => 'anonymous', 'integrity' => 'sha384-E7gp+UYBLS2XewcxoJbfi0UpGMHSvt9XyI9bH4YIw5GDGW8AlC+2J7bVBBlMFC6p']
+            )
+            ->appendFile(
+                '//cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.1/build/jquery.datetimepicker.full.min.js',
+                'text/javascript',
+                ['crossorigin' => 'anonymous', 'integrity' => 'sha384-dhYcnDUJrt9gCbnzi8BEH2RF3p2h0OyoTInJ6bdjBkvdy41QCFBolB0o2yr/q1VF']
+            );
+
+        if (APPLICATION_ENV === 'development') {
+            $this->headLink()
+                ->appendStylesheet('/cookiebar/jquery.cookiebar.css')
+                ->appendStylesheet('/vrok-lib/vrok-lib.css')
+                ->appendStylesheet('/css/base.css');
+
+            $this->headScript()
+                ->appendFile('/cookiebar/jquery.cookiebar.js')
+                ->appendFile('/vrok-lib/vrok-lib.js')
+                ->appendFile('/app-base.js')
+                ->appendFile('/js/_module-name_.js');
+        } else {
+            $this->headLink()
+                ->appendStylesheet('/css/combined.css?v=20161110');
+
+            $this->headScript()
+                ->appendFile('/js/combined.js?v=20161110');
+        }
+
+        echo $this->headLink();
+        echo $this->headStyle();
+
+        ?>
+        <link rel="canonical" href="<?php echo $serverUrl; ?>" />
+        <link rel="alternate" href="<?php echo $serverUrl; ?>" hreflang="en" />
+
+        <!--<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=XBrJ30qOvW">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png?v=XBrJ30qOvW" sizes="32x32">
+        <link rel="icon" type="image/png" href="/favicon-16x16.png?v=XBrJ30qOvW" sizes="16x16">
+        <link rel="manifest" href="/manifest.json?v=XBrJ30qOvW">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg?v=XBrJ30qOvW" color="#5bbad5">
+        <link rel="shortcut icon" href="/favicon.ico?v=XBrJ30qOvW">
+        <meta name="theme-color" content="#ffffff">-->
+
+    </head>
+    <body class="navbar-container">
+        <div id="wrap">
+            <div class="navbar-default navbar navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <a class="navbar-brand" href="/" title="<?php echo $this->translate('view.application.tagline'); ?>"><?php echo $this->translate('view.application.name'); ?></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                        <?php echo $this->navigation('Navigation')->menu()
+                                ->setPartial('app-base/partials/menu')
+                                ->setUlClass('nav navbar-nav'); ?>
+
+                        <p class="navbar-text navbar-right">
+                            <?php if ($this->identity()) : ?>
+                                <a href="<?php echo $this->url('account/logout').'?s='.session_id(); ?>" class="navbar-link" title="<?php echo $this->translate('navigation.account.logout'); ?>"><?php echo $this->translate('navigation.account.logout'); ?></a>
+                            <?php else : ?>
+                                <a href="<?php echo $this->url('account/login'); ?>" class="navbar-link" title="<?php echo $this->translate('navigation.account.login'); ?>"><?php echo $this->translate('navigation.account.login'); ?></a>
+                            <?php endif; ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <?php $breadcrumbs = trim($this->navigation()->breadcrumbs('Navigation')
+                        ->setRenderInvisible(true));
+            if ($breadcrumbs) : ?>
+                <div class="container">
+                    <?php echo $breadcrumbs; ?>
+                </div>
+            <?php endif; ?>
+            <div class="container">
+                <?php echo $this->content; ?>
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="container">
+                © 2016 <a href="<?php echo $this->url('home'); ?>" title="<?php echo $this->translate('view.application.tagline'); ?>"><?php echo $this->translate('view.application.name'); ?></a>
+                &hyphen;
+                <a href="<?php echo $this->url('imprint'); ?>" title="<?php echo $this->translate('navigation.index.imprint'); ?>"><?php echo $this->translate('navigation.index.imprint'); ?></a>
+                &hyphen;
+                <a href="<?php echo $this->url('privacy'); ?>" title="<?php echo $this->translate('navigation.index.privacy'); ?>"><?php echo $this->translate('navigation.index.privacy'); ?></a>
+            </div>
+        </footer>
+
+        <?php
+            echo $this->inlineScript();
+            echo $this->headScript();
+        ?>
+    </body>
+</html>

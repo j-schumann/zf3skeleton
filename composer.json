@@ -1,0 +1,36 @@
+{
+    "name": "_provider_/_reponame_",
+    "description": "ZF3 application",
+    "license": "private",
+    "homepage": "https://domain.tld/",
+
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://github.com/j-schumann/vrok-lib.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/j-schumann/application-base.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/j-schumann/translation-module.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/j-schumann/supervisor-control.git"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "vrok/application-base": "^4.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "_ModuleName_\\": "module/_ModuleName_/src"
+        }
+    }
+}
